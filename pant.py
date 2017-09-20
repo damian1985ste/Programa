@@ -8,7 +8,7 @@ class pantallas:
     #codigo de inicializacion
     self.disp = ST7920()
     
-  def cadena_l_21(cadena):
+  def cadena_l_21(self, cadena):
     '''Esta funcion devuelve una lista con cadenas de largo 21
     a partir de una cadena original pasada como parametro'''
     res = []
@@ -29,34 +29,34 @@ class pantallas:
       
         
   def imp_menu(self,linea1,linea2 ="",linea3="", linea4="", sel = 1):
-  '''Esta función realiza la impresion en pantalla del menu de 
-  acuerdo a los parametros linea1,linea2,linea3, linea4 que son
-  las opciones del menu y se encontrara seleccionada la que 
-  indique el parametro sel con valores de 1 a 4 (por defecto 1)'''
-      lin1 = cadena_l_21(linea1)
-      lin2 = cadena_l_21(linea2)
-      lin3 = cadena_l_21(linea3)
-      lin4 = cadena_l_21(linea4)   
-      self.disp.clear()
-      self.disp.redraw()
-      if sel == 1:
-        self.disp.put_textB(lin1[0],0,12)
-      else:
-        self.disp.put_text(lin1[0],0,12)
-      #self.disp.redraw()
-      if sel==2:
-        self.disp.put_textB(lin2[0],0,22)
-      else:
-        self.disp.put_text(lin2[0],0,22)
-      #self.disp.redraw()
-      if sel==3:
-        self.disp.put_textB(lin3[0],0,32)
-      else:
-        self.disp.put_text(lin3[0],0,32)
-      #self.disp.redraw()
-      if sel==4:
-        self.disp.put_textB(lin4[0],0,22)
-      else:
-        self.disp.put_text(lin4[0],0,42)
-      self.disp.redraw()
-      time.sleep(0.01)
+    '''Esta funcion realiza la impresion en pantalla del menu de 
+    acuerdo a los parametros linea1,linea2,linea3, linea4 que son
+    las opciones del menu y se encontrara seleccionada la que 
+    indique el parametro sel con valores de 1 a 4 (por defecto 1)'''
+    lin1 = self.cadena_l_21(linea1)
+    lin2 = self.cadena_l_21(linea2)
+    lin3 = self.cadena_l_21(linea3)
+    lin4 = self.cadena_l_21(linea4)   
+    self.disp.clear()
+    self.disp.redraw()
+    if sel == 1:
+      self.disp.put_textB(lin1[0],0,12)
+    else:
+      self.disp.put_text(lin1[0],0,12)
+    #self.disp.redraw()
+    if sel==2:
+      self.disp.put_textB(lin2[0],0,22)
+    else:
+      self.disp.put_text(lin2[0],0,22)
+    #self.disp.redraw()
+    if sel==3:
+      self.disp.put_textB(lin3[0],0,32)
+    else:
+      self.disp.put_text(lin3[0],0,32)
+    #self.disp.redraw()
+    if sel==4:
+      self.disp.put_textB(lin4[0],0,22)
+    else:
+      self.disp.put_text(lin4[0],0,42)
+    self.disp.redraw()
+    time.sleep(0.01)

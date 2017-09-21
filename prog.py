@@ -3,7 +3,9 @@ sys.path.append('../Drivers/Rotary-Encoder/')
 from rotary_encoder import r_encoder
 
 from pant import pantallas
+from inicio import inicio
 
+inicio()
 p = pantallas()
 re = r_encoder()
 

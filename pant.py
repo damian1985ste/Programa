@@ -40,23 +40,27 @@ class pantallas:
     self.disp.clear()
     self.disp.redraw()
     if sel == 1:
-      self.disp.put_textB(lin1[0],0,12)
+      self.disp.rect(0,11,127,20)
+      self.disp.put_textB(lin1[0],1,12)
     else:
-      self.disp.put_text(lin1[0],0,12)
+      self.disp.put_text(lin1[0],1,12)
     #self.disp.redraw()
     if sel==2:
-      self.disp.put_textB(lin2[0],0,22)
+      self.disp.rect(0,21,127,30)
+      self.disp.put_textB(lin2[0],1,22)
     else:
-      self.disp.put_text(lin2[0],0,22)
+      self.disp.put_text(lin2[0],1,22)
     #self.disp.redraw()
     if sel==3:
-      self.disp.put_textB(lin3[0],0,32)
+      self.disp.rect(0,31,127,40)
+      self.disp.put_textB(lin3[0],1,32)
     else:
-      self.disp.put_text(lin3[0],0,32)
+      self.disp.put_text(lin3[0],1,32)
     #self.disp.redraw()
     if sel==4:
-      self.disp.put_textB(lin4[0],0,22)
+      self.disp.rect(0,41,127,50)
+      self.disp.put_textB(lin4[0],1,42)
     else:
-      self.disp.put_text(lin4[0],0,42)
+      self.disp.put_text(lin4[0],1,42)
     self.disp.redraw()
     time.sleep(0.01)

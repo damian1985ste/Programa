@@ -11,7 +11,7 @@ re = r_encoder()
 
 # Imprimo menu inicial
 sel = 1
-p.imp_menu('Trabajar con animales en manga', 'Identificar animales','Apagar','', sel)
+p.imp_menu('Comenzar a Trabajar', 'Descargar Registros','Configurar','Apagar', sel)
 
 #si presionamos el boton pasamos al siguiente menu, si giramos el rotary encoder seleccionamos la linea indicada
 while True:
@@ -42,4 +42,4 @@ while True:
       sel = 3
     elif sel == 4:
       sel = 1
-    p.imp_menu('Trabajar con animales en manga', 'Identificar animales','Apagar', '',sel)
+    p.imp_menu('Comenzar a Trabajar', 'Descargar Registros','Configurar','Apagar', sel)

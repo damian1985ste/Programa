@@ -2,6 +2,7 @@ import sys
 sys.path.append('../Drivers/display/')
 from st7920 import ST7920
 import time
+from inicio import inicio
 
 class pantallas:
   def __init__(self):
@@ -26,7 +27,21 @@ class pantallas:
         res[div] = res[div]+" "
     return res
     
-      
+  def imp_encab(self, wifi, BT):
+    '''Esta funcion imprime el ecabezado que muestra fecha y hora del 
+    dispositivo y si tiene habilitado y o conectado el bluetooth y el 
+    wifi'''
+    hora = time.strftime("%H:%M")
+    fecha = print (time.strftime("%d/%m/%Y"))
+    self.disp.clear()
+    self.disp.redraw()
+    self.disp.rect(0,0,127,11)
+    self.disp.put_text(fecha+'-'+hora,1,0)
+    if wifi:
+      inicio.wifi_icon(102,2)# Mostramos el logo de wifi activado o conectado
+    if BT:
+      inicio.BT_icon(115,2)# Mostramos el logo de bluetooth activado o conectado      
+    return 1      
         
   def imp_menu(self,linea1,linea2 ="",linea3="", linea4="", sel = 1):
     '''Esta funcion realiza la impresion en pantalla del menu de 
@@ -64,3 +79,4 @@ class pantallas:
       self.disp.put_text(lin4[0],1,42)
     self.disp.redraw()
     time.sleep(0.01)
+    return 1

@@ -31,6 +31,9 @@ while True:
     elif sel==2:
       p.imp_menu('Vacias', 'Prueba','Prueba 1','Prueba 2')
     elif sel==3:
+      #Codigo
+      print('opcion 3')
+    elif sel==4:
       # Apagar Ver de meter pantallita de apagado
       break
     else:
@@ -40,7 +43,7 @@ while True:
   if rot!=0:
     sel=sel+rot
     if sel==0:
-      sel = 3
-    elif sel == 4:
+      sel = 4
+    elif sel == 5:
       sel = 1
     p.imp_menu('Comenzar a Trabajar', 'Descargar Registros','Configurar','Apagar', sel)

@@ -1,13 +1,15 @@
+from images import img
 import sys
 sys.path.append('../Drivers/display/')
 from st7920 import ST7920
 import time
-from inicio import inicio
+
 
 class pantallas:
   def __init__(self):
     #codigo de inicializacion
     self.disp = ST7920()
+    self.img =img()
     
   def cadena_l_21(self, cadena):
     '''Esta funcion devuelve una lista con cadenas de largo 21
@@ -32,16 +34,25 @@ class pantallas:
     dispositivo y si tiene habilitado y o conectado el bluetooth y el 
     wifi'''
     hora = time.strftime("%H:%M")
-    fecha = print (time.strftime("%d/%m/%Y"))
-    self.disp.clear()
-    self.disp.redraw()
-    self.disp.rect(0,0,127,11)
-    self.disp.put_text(fecha+'-'+hora,1,0)
+    fecha = time.strftime("%d/%m/%Y")
+    self.img.p.clear()
+    self.img.p.redraw()
+    self.img.p.rect(0,0,127,11)
+    self.img.p.put_text(fecha+'-'+hora,2,2)
+    #self.img.p.redraw(0,0,127,11)
     if wifi:
-      inicio.wifi_icon(102,2)# Mostramos el logo de wifi activado o conectado
+      #self.img.wifi_icon(102,2)# Mostramos el logo de wifi activado o conectado
+      	wifi_ico = ['0011111100','0100000010','1000000001','0001111000','0010000100','0100000010','0000110000','0001001000','0000000000','0000110000']
+	for y1 in range(len(wifi_ico)):
+      			for x1 in range(len(wifi_ico[y1])):
+	        		self.img.p.plot(x1+102,y1+2,int(wifi_ico[y1][x1]))
     if BT:
-      inicio.BT_icon(115,2)# Mostramos el logo de bluetooth activado o conectado      
-    return 1      
+      #self.img.BT_icon(115,2)# Mostramos el logo de bluetooth activado o conectado 
+      	BT_ico = ['0001000000','0001100000','1001010010','0101010001','0011100101','0011100101','0101010001','1001010010','0001100000','0001000000']
+    	for y2 in range(len(BT_ico)):
+      			for x2 in range(len(BT_ico[y2])):
+        			self.img.p.plot(x2+115,y2+2,int(BT_ico[y2][x2]))     
+    return self.img.p.redraw(0,0,127,11)     
         
   def imp_menu(self,linea1,linea2 ="",linea3="", linea4="", sel = 1):
     '''Esta funcion realiza la impresion en pantalla del menu de 

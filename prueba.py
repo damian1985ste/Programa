@@ -1,3 +1,4 @@
-from inicio import inicio
+from pant import pantallas
+p=pantallas()
+p.imp_encab(True,True)
 
-inicio()

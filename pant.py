@@ -145,3 +145,22 @@ class pantallas:
     else:
       self.img.p.put_text(lin[3],1,y0+31)
     self.img.p.redraw()
+    
+  def pant_lect_carav(self, nroCarText, nCaravana, cmd, sel=False,pesoTexto='', peso ='', pais = 'UY'):
+    '''Esta funcion imprime la pantalla de lectura de la caravana recibe el
+    texto (Nro de caravana u en otro idioma), nCaravana (texto), cmd comando 
+    del boton(Terminar), sel estado del boton, pesoTexto referecia al peso, 
+    peso valor del peso y unidad y Pais del valor de la caravana'''
+    nCarav5 = nCaravana[0:5]
+    nCarav4 = nCaravana[5:9]
+    self.img.p.put_text(nroCarText+pais+' '+nCarav5,1,3)
+    self.img.p.put_textG(nCarav4,41,20)
+    if peso != '':
+      self.img.p.put_text(pesoTexto+peso,1,44)
+    self.img.p.rect(0,54,127,63)
+    coman = self.cadena_l_21(self.cadena_cent(cmd))
+    if sel:
+      self.img.p.put_textB(coman[0],1,55)
+    else:
+      self.img.p.put_text(coman[0],1,55)
+    self.img.p.redraw()

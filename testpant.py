@@ -2,4 +2,5 @@ from pant import pantallas
 
 men = pantallas()
 
-men.imp_menu('Linea 1','Linea 2','LINEA 3','linea 4')
+men.pant_lect_carav('Nro caravana:', '034763662','Terminar',True, 'Peso: ','250 Kg')
+#pant_lect_carav(self, nroCarText, nCaravana, cmd, sel=False,pesoTexto='', peso ='', pais = 'UY')

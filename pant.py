@@ -11,29 +11,30 @@ class pantallas:
     self.disp = ST7920()
     self.img =img()
     
-  def cadena_l_21(self, cadena):
-    '''Esta funcion devuelve una lista con cadenas de largo 21
+  def cadena_l_21(self, cadena, largo = 21):
+    '''Esta funcion devuelve una lista con cadenas de largo (largo)
     a partir de una cadena original pasada como parametro'''
     res = []
-    if len(cadena) <= 21:
+    if len(cadena) <= largo:
       res = [cadena]
-      for k in range(len(cadena),21):
+      for k in range(len(cadena),largo):
         res[0] = res[0]+" "
-    elif len(cadena)>21:
-      div = len(cadena)//21
-      resto = len(cadena)%21
+    elif len(cadena)>largo:
+      div = len(cadena)//largo
+      resto = len(cadena)%largo
       for t in range(div):
-        res.append(cadena[21*t:21+21*t])
-      res.append(cadena[21*div:21*div+resto])
-      for w in range(resto,21):
+        res.append(cadena[largo*t:largo+largo*t])
+      res.append(cadena[largo*div:largo*div+resto])
+      for w in range(resto,largo):
         res[div] = res[div]+" "
     return res
     
-  def cadena_cent(self,cad):
-    if len(cad)>=21:
-      return(cad[0:21])
+  def cadena_cent(self,cad,largo):
+  '''Esta funcion centra la cadena cad en un espacio de largo (largo)'''
+    if len(cad)>=largo:
+      return(cad[0:largo])
     else:
-      esp = (21-len(cad))//2
+      esp = (largo-len(cad))//2
       cadena = ''
       for x in range(esp):
         cadena = cadena+' '
@@ -105,14 +106,14 @@ class pantallas:
     time.sleep(0.01)
     return 1
     
-  def pant_select(self, title, sel, lineas):
+  def pant_select(self, title, sel, lineas, cmd1, cmd2):
     '''Esta funcion imprime la pantalla de seleccion a partir de los datos 
     que recibe como parametros: title el titulo de la pantalla, sel la opcion
     seleccionada, lineas una lista de 4 tuplas con el par parametro opcion'''
     self.img.p.clear()
     self.img.p.redraw()
     self.img.p.rect(0,0,127,12)
-    titu=self.cadena_cent(title)
+    titu=self.cadena_cent(title,21)
     self.img.p.put_text(titu,3,3)
     lin =[]
     for k in range(len(lineas)):
@@ -121,6 +122,7 @@ class pantallas:
       lin.append('')  
     print lin[0]
     y0 = 13
+    #Lista de atributos y su opción
     if sel == 1:
       self.img.p.rect(0,y0,127,y0+9)
       self.img.p.put_textB(lin[0],1,y0+1)
@@ -144,6 +146,21 @@ class pantallas:
       self.img.p.put_textB(lin[3],1,y0+31)
     else:
       self.img.p.put_text(lin[3],1,y0+31)
+    ### Comandos de la ventana
+    #Rectangulo para el primer comando
+    self.img.p.rect(0,54,63,63)
+    #Rectangulo para el segundo comando
+    self.img.p.rect(63,54,127,63)
+    coman1 = self.cadena_l_21(self.cadena_cent(cmd1,10),10)
+    coman2 = self.cadena_l_21(self.cadena_cent(cmd2,10),10)
+    if sel==5:
+      self.img.p.put_textB(coman1[0],1,55)
+    else:
+      self.img.p.put_text(coman1[0],1,55)
+    if sel==6:
+      self.img.p.put_textB(coman2[0],64,55)
+    else:
+      self.img.p.put_text(coman2[0],64,55)
     self.img.p.redraw()
     
   def pant_lect_carav(self, nroCarText, nCaravana, cmd, sel=False,pesoTexto='', peso ='', pais = 'UY'):
@@ -158,7 +175,7 @@ class pantallas:
     if peso != '':
       self.img.p.put_text(pesoTexto+peso,1,44)
     self.img.p.rect(0,54,127,63)
-    coman = self.cadena_l_21(self.cadena_cent(cmd))
+    coman = self.cadena_l_21(self.cadena_cent(cmd,21))
     if sel:
       self.img.p.put_textB(coman[0],1,55)
     else:

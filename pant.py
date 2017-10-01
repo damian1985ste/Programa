@@ -30,7 +30,7 @@ class pantallas:
     return res
     
   def cadena_cent(self,cad,largo):
-  '''Esta funcion centra la cadena cad en un espacio de largo (largo)'''
+    '''Esta funcion centra la cadena cad en un espacio de largo (largo)'''
     if len(cad)>=largo:
       return(cad[0:largo])
     else:
@@ -49,7 +49,7 @@ class pantallas:
     fecha = time.strftime("%d/%m/%Y")
     self.img.p.clear()
     self.img.p.redraw()
-    self.img.p.rect(0,0,127,12)
+    self.img.p.rect(0,0,127,13)
     self.img.p.put_text(fecha+'-'+hora,2,3)
     #self.img.p.redraw(0,0,127,11)
     if wifi:
@@ -64,7 +64,7 @@ class pantallas:
     	for y2 in range(len(BT_ico)):
       			for x2 in range(len(BT_ico[y2])):
         			self.img.p.plot(x2+115,y2+2,int(BT_ico[y2][x2]))     
-    return self.img.p.redraw(0,0,127,12)     
+    return self.img.p.redraw(0,0,127,13)     
         
   def imp_menu(self,linea1,linea2 ="",linea3="", linea4="", sel = 1):
     '''Esta funcion realiza la impresion en pantalla del menu de 
@@ -120,9 +120,9 @@ class pantallas:
       lin.append(self.cadena_l_21(lineas[k][0])[0][0:20]+lineas[k][1])
     for t in range(4-len(lineas)):
       lin.append('')  
-    print lin[0]
+    #print lin[0]
     y0 = 13
-    #Lista de atributos y su opción
+    #Lista de atributos y su opcion
     if sel == 1:
       self.img.p.rect(0,y0,127,y0+9)
       self.img.p.put_textB(lin[0],1,y0+1)
@@ -148,19 +148,21 @@ class pantallas:
       self.img.p.put_text(lin[3],1,y0+31)
     ### Comandos de la ventana
     #Rectangulo para el primer comando
-    self.img.p.rect(0,54,63,63)
+    self.img.p.rect(0,53,127,63)
     #Rectangulo para el segundo comando
-    self.img.p.rect(63,54,127,63)
+    #self.img.p.rect(63,54,127,63)
     coman1 = self.cadena_l_21(self.cadena_cent(cmd1,10),10)
     coman2 = self.cadena_l_21(self.cadena_cent(cmd2,10),10)
     if sel==5:
-      self.img.p.put_textB(coman1[0],1,55)
+      self.img.p.rect(1,54,62,63)
+      self.img.p.put_textB(coman1[0],2,55)
     else:
-      self.img.p.put_text(coman1[0],1,55)
+      self.img.p.put_text(coman1[0],3,55)
     if sel==6:
-      self.img.p.put_textB(coman2[0],64,55)
+      self.img.p.rect(66,54,126,63)
+      self.img.p.put_textB(coman2[0],67,55)
     else:
-      self.img.p.put_text(coman2[0],64,55)
+      self.img.p.put_text(coman2[0],67,55)
     self.img.p.redraw()
     
   def pant_lect_carav(self, nroCarText, nCaravana, cmd, sel=False,pesoTexto='', peso ='', pais = 'UY'):
@@ -168,6 +170,8 @@ class pantallas:
     texto (Nro de caravana u en otro idioma), nCaravana (texto), cmd comando 
     del boton(Terminar), sel estado del boton, pesoTexto referecia al peso, 
     peso valor del peso y unidad y Pais del valor de la caravana'''
+    self.img.p.clear()
+    self.img.p.redraw()
     nCarav5 = nCaravana[0:5]
     nCarav4 = nCaravana[5:9]
     self.img.p.put_text(nroCarText+pais+' '+nCarav5,1,3)

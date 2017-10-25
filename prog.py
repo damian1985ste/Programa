@@ -60,7 +60,8 @@ while True:
         btn1=False
         rot1=0
         p.pant_select('Datos a registrar', sel1, [('Lectura',e1), ('Aftosa', e2), ('Vientre vacio',e3), ('Antiparasitario',e4)], 'Siguiente', 'Cancelar')
-        while not btn1 and rot1==0:
+        ####================================= FALTA MIGRAR
+		while not btn1 and rot1==0:
           btn1 = re.btn_state()
           #print(btn)
           rot1 = re.rot_encod()[0]
@@ -146,8 +147,7 @@ while True:
             btn1=False
           elif sel1==6:
             #print('prog.py - linea 112 -> Opcion de salida Comenzar a trabajar - Datos a Registrar')
-            sel1='X'
-             
+            sel1='X'    
         #p.imp_menu('Lectura', 'Aftosa','Prenez','Antiparasitario')
         if rot1!=0:
           sel1=sel1+rot1
@@ -158,6 +158,7 @@ while True:
       print('prog.py - linea 122 -> Salgo del menu Comenzar a trabajar - Datos a Registrar')
       time.sleep(0.2)
       btn=False
+	  #####========================================= 
     elif sel==2:
       p.imp_menu('Descargar datos', 'Borrar registros','','Prueba 2')
     elif sel==3:

@@ -60,7 +60,6 @@ while True:
         btn1=False
         rot1=0
         p.pant_select('Datos a registrar', sel1, [('Lectura',e1), ('Aftosa', e2), ('Vientre vacio',e3), ('Antiparasitario',e4)], 'Siguiente', 'Cancelar')
-        ####================================= FALTA MIGRAR
 		while not btn1 and rot1==0:
           btn1 = re.btn_state()
           #print(btn)
@@ -77,7 +76,8 @@ while True:
             e4=DaRopc(e4)
           elif sel1==5:
             #Pantalla siguiente Lotes a identificar
-            print('prog.py - linea 73 -> Comenzar a trabajar - Lotes  a identificar')
+            ####================================= FALTA MIGRAR
+			print('prog.py - linea 73 -> Comenzar a trabajar - Lotes  a identificar')
             sel11, e11, e12, e13, e14 = 1 , 'X' , ' ' , ' ' , ' '
             btn11=False
             while sel11!='X': #and not btn11:
@@ -131,7 +131,7 @@ while True:
 						else:
 							btnsel=False
 					print('prog.py - linea 120 -> Salgo de la pantalla de lectura')	
-						
+		####================================= 				
 				  elif sel11==6:
 					#print('prog.py - linea 99 -> Opcion de salida Comenzar a trabajar - Datos a Registrar')
 					sel11='X'
@@ -158,7 +158,6 @@ while True:
       print('prog.py - linea 122 -> Salgo del menu Comenzar a trabajar - Datos a Registrar')
       time.sleep(0.2)
       btn=False
-	  #####========================================= 
     elif sel==2:
       p.imp_menu('Descargar datos', 'Borrar registros','','Prueba 2')
     elif sel==3:
